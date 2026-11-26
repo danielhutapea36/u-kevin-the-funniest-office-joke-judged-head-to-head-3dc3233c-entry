@@ -40,6 +40,10 @@ def build_joke() -> str:
         raise ValueError("joke must be a single line")
     if not joke.strip():
         raise ValueError("joke must not be only white space")
+    if joke != joke.strip():
+        # A stray space at either end would count toward the gate's
+        # character limit without earning its place in the joke.
+        raise ValueError("joke must not start or end with white space")
     return joke
 
 
